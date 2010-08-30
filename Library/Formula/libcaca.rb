@@ -1,18 +1,23 @@
 require 'formula'
 
 class Libcaca <Formula
-  url 'http://caca.zoy.org/raw-attachment/wiki/libcaca/libcaca-0.9.tar.bz2'
+  url 'http://caca.zoy.org/files/libcaca/libcaca-0.99.beta17.tar.gz'
   homepage 'http://caca.zoy.org/wiki/libcaca'
-  md5 'c7d5c46206091a9203fcb214abb25e4a'
+  md5 '790d6e26b7950e15909fdbeb23a7ea87'
+
+  depends_on 'gettext'
 
   def install
+    # Some people can't compile when Java is enabled. See:
+    # http://github.com/mxcl/homebrew/issues/issue/2049
     system "./configure", "--disable-debug",
                           "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
                           "--mandir=#{man}",
                           "--disable-imlib2",
                           "--disable-doc",
-                          "--disable-slang"
+                          "--disable-slang",
+                          "--disable-java"
     system "make install"
   end
 end

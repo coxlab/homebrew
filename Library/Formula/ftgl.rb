@@ -14,7 +14,8 @@ class Ftgl <Formula
       puts "use \"brew link doxygen\" afterwards to reactivate it."
     end
 
-    ENV.x11 # Freetype
+    ENV.x11 # Put freetype-config in path
+
     system "./configure", "--disable-debug", "--disable-dependency-tracking",
                           "--prefix=#{prefix}",
                           "--disable-freetypetest",
